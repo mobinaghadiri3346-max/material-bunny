@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material Bunny 🐰</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Vazirmatn', sans-serif;
+background:#fff0f6;
+color:#444;
+}
+
+header{
+background:linear-gradient(135deg,#ffb6d9,#ff8ecf);
+text-align:center;
+padding:50px 20px;
+color:white;
+}
+
+nav{
+background:#ffd6eb;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+margin:0 10px;
+text-decoration:none;
+color:#ff4da6;
+font-weight:bold;
+}
+
+section{
+padding:50px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(255,105,180,0.2);
+text-align:center;
+}
+
+.card h3{
+margin-top:0;
+}
+
+.price{
+color:#ff4da6;
+font-weight:bold;
+}
+
+button{
+background:#ff8ecf;
+border:none;
+padding:10px 20px;
+border-radius:25px;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#ff4da6;
+}
+
+.discount{
+background:#ffe6f2;
+padding:30px;
+border-radius:20px;
+text-align:center;
+}
+
+footer{
+background:#ffd6eb;
+text-align:center;
+padding:20px;
+}
+
+.cart-box{
+position:fixed;
+top:20px;
+left:20px;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+width:250px;
+}
+
+.cart-box h4{
+margin-top:0;
+color:#ff4da6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🐰 Material Bunny</h1>
+<p>متریال کیوت برای ساخت اکسسوری 💗</p>
+</header>
+
+<nav>
+<a href="#charm">متریال ساخت چارم</a>
+<a href="#accessory">متریال ساخت اکسسوری</a>
+<a href="#discount">تخفیف‌ها</a>
+<a href="#contact">پشتیبانی</a>
+</nav>
+
+<section id="charm">
+<h2>🎀 متریال ساخت چارم</h2>
+<div class="products">
+
+<div class="card">
+<h3>مهره صورتی پاستلی</h3>
+<p class="price">45,000 تومان</p>
+<button onclick="addToCart('مهره صورتی پاستلی',45000)">افزودن به سبد</button>
+</div>
+
+<div class="card">
+<h3>آویز خرگوشی کیوت</h3>
+<p class="price">60,000 تومان</p>
+<button onclick="addToCart('آویز خرگوشی کیوت',60000)">افزودن به سبد</button>
+</div>
+
+</div>
+</section>
+
+<section id="accessory">
+<h2>✨ متریال ساخت اکسسوری</h2>
+<div class="products">
+
+<div class="card">
+<h3>زنجیر طلایی ظریف</h3>
+<p class="price">120,000 تومان</p>
+<button onclick="addToCart('زنجیر طلایی ظریف',120000)">افزودن به سبد</button>
+</div>
+
+</div>
+</section>
+
+<section id="discount">
+<h2>💖 تخفیف‌های ویژه بانی</h2>
+<div class="discount">
+<p>🎉 این هفته 15٪ تخفیف روی همه مهره‌های فانتزی!</p>
+<p>کد تخفیف: <strong>BUNNY15</strong></p>
+</div>
+</section>
+
+<section id="contact">
+<h2>💌 پشتیبانی و ارتباط با ما</h2>
+<p>📢 چنل تلگرام: <a href="https://t.me/material_bunny" target="_blank">@material_bunny</a></p>
+<p>👩🏻‍💻 پشتیبانی تلگرام: <a href="https://t.me/material_bunny_admin" target="_blank">@material_bunny_admin</a></p>
+</section>
+
+<footer>
+© 2026 Material Bunny 🐰
+</footer>
+
+<div class="cart-box">
+<h4>🛍 سبد خرید</h4>
+<div id="cart-items"></div>
+<p id="total"></p>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name,price){
+cart.push({name,price});
+renderCart();
+}
+
+function renderCart(){
+let itemsDiv = document.getElementById("cart-items");
+let total = 0;
+itemsDiv.innerHTML="";
+cart.forEach(item=>{
+itemsDiv.innerHTML += "<p>"+item.name+"</p>";
+total += item.price;
+});
+document.getElementById("total").innerText="جمع: "+total+" تومان";
+}
+</script>
+
+</body>
+</html>
